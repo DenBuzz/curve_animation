@@ -18,8 +18,6 @@ def animate_lines(x, f, g, frames, interval):
     shift = (y_max - y_min) / 10
 
     def update_lines(i):
-        if i == 0:
-            time.sleep(1)
         y_mid = f(x) + (g(x) - f(x)) * sigmoid(sig_points[i])
         line.set_data(x, y_mid)
         return line,
@@ -40,10 +38,10 @@ def animate_lines(x, f, g, frames, interval):
 x = np.arange(-2 * np.pi, 2 * np.pi, 0.1)
 
 
-def f(x): return -np.cos(x)**2
+def f(x): return np.sin(x)
 
 
-def g(x): return 1 + np.cos(x)
+def g(x): return np.cos(x)
 
 
 animate_lines(x, f, g, 1000, 3)
